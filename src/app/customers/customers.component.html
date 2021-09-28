@@ -1,0 +1,101 @@
+<!--
+<h2>{{customer.name}} Details</h2>
+<div><span>id: </span>{{customer.id}}</div>
+<div><span>name: </span>{{customer.name}}</div>
+-->
+
+
+<h2>My Customers</h2>
+
+  <ul class="customers">
+  <li *ngFor="let customer of customers">
+    <a routerLink="/detail/{{customer.id}}">
+      <span class="badge">{{customer.id}}</span> {{customer.name}}
+    </a>
+  </li>
+</ul>
+
+<!--
+<form class="example-form">
+  <mat-form-field class="example-full-width">
+    <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
+  </mat-form-field>
+</form>
+-->
+
+<mat-form-field>
+  <mat-label>Filter</mat-label>
+  <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+</mat-form-field>
+
+<div style="width: 90%; margin: 0 auto;" matSource class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource" matSort>
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="account_number">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> ACCOUNT NUMBER </th>
+      <td mat-cell *matCellDef="let element"> {{element.account_number}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="address">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> ADDRESS </th>
+      <td mat-cell *matCellDef="let element"> {{element.address}} </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+   <!-- <ng-container matColumnDef="city">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> CITY </th>
+      <td mat-cell *matCellDef="let element"> {{element.city}} </td>
+    </ng-container>
+   -->
+
+    <!-- Symbol Column -->
+   <!-- <ng-container matColumnDef="zip">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> ZIP </th>
+      <td mat-cell *matCellDef="let element"> {{element.zip}} </td>
+    </ng-container>
+  -->
+
+  
+    <ng-container matColumnDef="business_area">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> BUILDING AREA </th>
+      <td mat-cell *matCellDef="let element"> {{element.business_area}} </td>
+    </ng-container>
+
+   <ng-container matColumnDef="land_area">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> LAND AREA </th>
+      <td mat-cell *matCellDef="let element"> {{element.land_area}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="land_value">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> LAND VALUE </th>
+      <td mat-cell *matCellDef="let element"> {{element.land_value}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="improvement_value">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> IMRPOVEMENT VALUE </th>
+      <td mat-cell *matCellDef="let element"> {{element.improvement_value}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="market_value">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> MARKET VALUE </th>
+      <td mat-cell *matCellDef="let element"> {{element.market_value}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator style="margin: 0 auto;" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+
+</div>
+
+
+
+
+<!--
+<app-customer-detail [customer]="selectedCustomer"></app-customer-detail>
+-->
+
+
